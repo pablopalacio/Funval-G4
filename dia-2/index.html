@@ -4,13 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
+    
     <title>Document</title>
 </head>
-<body>
+<body id="cuerpo">
     <h1>dia2</h1>
     <h2 class="subtitulos">argentina</h2>
     <h2 id="subtitulo-funval">Pablo Palacio</h2>
-    <p>Se vienen cosias</p>
+    <p>Se vienen cositas</p>
     <button>Haz clic aquí</button>
+    <button id="modoBtn">🌙 Activar modo oscuro</button>
+      <script>
+    const boton = document.getElementById('modoBtn');
+    boton.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      if (document.body.classList.contains('dark-mode')) {
+        boton.textContent = '☀️ Desactivar modo oscuro';
+      } else {
+        boton.textContent = '🌙 Activar modo oscuro';
+      }
+    });
+  </script>
 </body>
 </html>
