@@ -44,6 +44,12 @@ h1 {
   text-shadow: 2px 2px 4px #aaa;
 }
 
+h2 {
+  font-size: 25px;
+  color: #2c3e50;
+  text-shadow: 2px 2px 4px #aaa;
+}
+
 
 h1:hover {
   color: #e74c3c;
@@ -60,6 +66,7 @@ h1.special {
 
 
 p {
+  font-size: 15px;
   font-family: Arial, sans-serif;
   color: #34495e;
   line-height: 1.6;
@@ -96,4 +103,23 @@ button:hover {
 button:active {
   transform: scale(0.95);
   background-color: #27ae60;
+}
+
+.card {
+  background-color: #033268;
+  color: white;
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  font-family: Arial, sans-serif;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+body.dark-mode .card {
+  background-color: #0a0a0a;
+  color: #f1f1f1;
+}
+body.dark-mode .card .correo {
+  color: #ff6b6b;
 }
