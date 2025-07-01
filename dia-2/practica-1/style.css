@@ -1,0 +1,67 @@
+body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      border-radius: 8px;
+    }
+
+    .contenedor {
+      border: 2px solid #000;
+      padding: 15px;
+      margin-top: 20px;
+      background-color: white;
+      border-radius: 8px;
+    }
+
+    .categorias {
+      display: flex;
+      justify-content: space-around;
+      margin: 15px 0;
+    }
+
+    .categorias p {
+      border: 1px solid #999;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #e0e0e0;
+      width: 100px;
+      text-align: center;
+    }
+
+    .galeria {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .cubo {
+      border: 2px solid #444;
+      width: 200px;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: #fafafa;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .cubo img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .titulo-seccion {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body class="light-mode">
+
+  <button id="toggle-dark" class="toggle-button">Cambiar Modo 🌙</button>
+
+  <h1>Hola, soy <strong>Pablo Palacio</strong></h1>
+
+  <p>
+    Soy un estudiante que esta apacionandose en el <em>full stack</em> pero por ahora en el <em>front end</em>.<br>
+    Me encanta aprender cosas nuevas, las clases son geniales y espero ser un excelente programador en pooco tiempo.
+  </p>
+
+  <h2>Mis intereses</h2>
+  <ul>
+    <li>Me encantan los juegos de pc</li>
+    <li>Amo jugar al rugby y hacer crossfit</li>
+    <li>Ir al cine</li>
+    <li>Estudiar Programacion y conseguir trabajo como desarollador web.</li>
+  </ul>
+
+  <div class="foto">
+    <img src="./img/yo2.PNG" alt="Mi Foto">
+  </div>
+
+  <h2>Habilidades</h2>
+  <div class="habilidades">
+    <div class="habilidad">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JS">
+      <p>JavaScript<br><strong>1 año</strong></p>
+    </div>
+    <div class="habilidad">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968242.png" alt="CSS">
+      <p>CSS<br><strong>2 años</strong></p>
+    </div>
+    <div class="habilidad">
+      <img src="https://cdn-icons-png.flaticon.com/512/6132/6132222.png" alt="C++">
+      <p>C++<br><strong>1 año</strong></p>
+    </div>
+    <div class="habilidad">
+      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+      <p>GitHub<br><strong>2 años</strong></p>
+    </div>
+  </div>
+
+  <h2>Mis Redes Sociales</h2>
+  <ul>
+    <li><a href="https://pablopalacio.github.io/Funval-G4/" target="_blank">GitHub</a></li>
+    <li><a href="https://linkedin.com/" target="_blank">LinkedIn</a></li>
+    <li><a href="https://twitter.com/" target="_blank">Twitter</a></li>
+    <li><a href="palaciopablo92@gmail.com">Correo Electrónico</a></li>
+  </ul>
+    <footer>
+    <h3>Contáctame</h3>
+    <form>
+      <label for="nombre">Nombre:</label><br>
+      <input type="text" id="nombre" name="nombre" required><br><br>
+
+      <label for="correo">Correo:</label><br>
+      <input type="email" id="correo" name="correo" required><br><br>
+
+      <label for="comentario">Comentario:</label><br>
+      <textarea id="comentario" name="comentario" rows="4" required></textarea><br><br>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </footer>
+    <script>
+    const toggleButton = document.getElementById('toggle-dark');
+    const body = document.body;
+
+    toggleButton.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      body.classList.toggle('light-mode');
+    });
+  </script>
+  </body>
+</html>
