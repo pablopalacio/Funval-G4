@@ -1,0 +1,75 @@
+
+body {
+  background-color: grey;
+  animation: fadeInOut 4s infinite;
+  text-align: center;
+  padding: 50px;
+  background-color: #f0f0f0;
+}
+
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+
+h1 {
+  font-size: 36px;
+  color: #2c3e50;
+  text-shadow: 2px 2px 4px #aaa;
+}
+
+
+h1:hover {
+  color: #e74c3c;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+
+h1.special {
+  background-color: #dff9fb;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+
+p {
+  font-family: Arial, sans-serif;
+  color: #34495e;
+  line-height: 1.6;
+}
+
+
+p.highlight {
+  background-color: #ffeaa7;
+  padding: 10px;
+  border-left: 5px solid #fdcb6e;
+}
+
+
+p:hover {
+  color: #2980b9;
+}
+
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2ecc71;
+}
+
+button:active {
+  transform: scale(0.95);
+  background-color: #27ae60;
+}
