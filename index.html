@@ -6,11 +6,41 @@
     <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
-<body class="portafolio">
-    <h1>Pablo Palacio :D</h1>
-    <a href="./dia-2/index.html">Este enlace te lleva al dia dos por la mañana.</a>
-    <a href="./dia-2/practica-1/index.html">Este enlace te lleva  a la practica por la tarde</a>
-    <a href="./dia-2/practicacalificada1/index.html">Este enlace te lleva  a la practica calificada 1</a>
-    <a href="./dia-3/practicaTarde/index.html">Este enlace te lleva  a la practica calificada 2</a>
+<body>
+  <header>
+    <h1>Pablo Palacio</h1>
+    <button onclick="toggleDarkMode()"> Modo Oscuro</button>
+  </header>
+
+  <main>
+    <section class="links">
+      <h2>Prácticas Generales</h2>
+      <div class="link-group">
+        <a href="./dia-2/index.html">Día 2 - Mañana</a>
+        <a href="./dia-2/practica-1/index.html">Día 2 - Tarde</a>
+        <a href="./dia-3/index.html">Día 3 - Mañana</a>
+        <a href="./dia-4/index.html">Día 4 - Mañana</a>
+      </div>
+    </section>
+
+    <section class="links">
+      <h2>Prácticas Calificadas</h2>
+      <div class="link-group">
+        <a href="./dia-2/practicacalificada1/index.html">Práctica Calificada 1</a>
+        <a href="./dia-3/practicaTarde/index.html">Práctica Calificada 2</a>
+        <a href="./dia-4/practicaCalificada/index.html">Práctica Calificada 3</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Pablo Palacio. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
 </body>
 </html>
