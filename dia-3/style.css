@@ -1,0 +1,190 @@
+/*     body { ///////////// tarea durante la clase de la mañana/////////////
+      margin: 20px;
+      padding: 20px;
+      background-color: #f5f5f5;
+      font-family: sans-serif;
+    }
+
+    .contenedor1, .contenedor2 {
+      justify-content: center;
+      align-items: center;   
+      display: flex;
+      gap: 15px; 
+      margin-bottom: 40px; 
+    }
+
+    .contenedor1 {
+        border: 1px solid black;
+      justify-content: flex-start; 
+    }
+
+    .contenedor2 {
+        border: 1px solid black;
+      justify-content: flex-end; 
+    }
+
+    .caja {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      width: 100px;
+      text-align: center;
+    }
+
+    .caja.radius {
+      border-radius: 15px;
+      background-color: #2196F3;
+    } */
+
+    /* 
+EJERCICIO 1
+Crea una div de 200x200px con fondo celeste. Agrega padding: 20px y coloca un texto dentro. Observar cómo se separa el texto del borde.
+EJERCICIO 2
+Crea dos div de color diferente. Asigna margin: 30px al segundo. Verifica cómo se separan entre ellas.
+EJERCICIO 3
+Crea dos cajas idénticas con fondo. A una dale margin: 20px y a la otra padding: 20px. ¿Qué diferencias ves?
+EJERCICIO 4
+Crea una caja con border: 5px solid red en la parte superior, 3px dashed green a la derecha, etc. Usa los 4 lados diferentes.
+EJERCICIO 5
+Crea una caja de 300px de ancho centrada horizontalmente en pantalla usando margin: 0 auto.
+EJERCICIO 6
+Crea una caja de 200x200px, agrégale padding: 40px y un borde de 4px solid black. Añade texto dentro.
+EJERCICIO 7
+Crea 3 cajas horizontales (en línea). Usa display: inline-block y margin-right: 10px para separarlas.
+EJERCICIO 8
+Diseña una tarjeta con padding: 20px, border: 2px solid gray, y border-radius: 10px. Agrega un título y párrafo dentro.
+EJERCICIO 9
+Haz un div con fondo azul, texto blanco, padding: 10px 20px, borde redondeado y cursor: pointer. Que se vea como botón.
+EJERCICIO 10
+ Crear una Alerta Visual
+ Crea una caja que represente una alerta (como un mensaje de advertencia).
+
+Debe tener:
+background-color: #ffdddd; (rosado claro)
+
+color: #a94442; (rojo oscuro para el texto)
+
+border: 1px solid #ebccd1; (rojo claro)
+
+padding: 15px;
+
+border-radius: 5px;
+
+margin: 20px auto;
+
+Ancho máximo de 400px.
+
+Agrega dentro un texto que diga:
+<strong>¡Advertencia!</strong> Debes llenar todos los campos del formulario.
+*/
+
+
+    .ej1 {
+      width: 200px;
+      height: 200px;
+      background-color: skyblue;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    /* 2 */
+    .ej2-1 {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+      display: inline-block;
+    }
+    .ej2-2 {
+      width: 100px;
+      height: 100px;
+      background-color: lightgreen;
+      margin: 30px;
+      display: inline-block;
+    }
+
+    /* 3 */
+    .ej3-margin {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      margin: 20px;
+      display: inline-block;
+    }
+    .ej3-padding {
+      width: 100px;
+      height: 100px;
+      background-color: lightblue;
+      padding: 20px;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    /* 4 */
+    .ej4 {
+      width: 150px;
+      height: 150px;
+      border-top: 5px solid red;
+      border-right: 3px dashed green;
+      border-bottom: 4px dotted blue;
+      border-left: 6px double purple;
+      margin-top: 30px;
+    }
+
+    /* 5 */
+    .ej5 {
+      width: 300px;
+      height: 100px;
+      background-color: coral;
+      margin: 30px auto;
+    }
+
+    /* 6 */
+    .ej6 {
+      width: 200px;
+      height: 200px;
+      padding: 40px;
+      border: 4px solid black;
+      background-color: lightyellow;
+      margin-bottom: 30px;
+    }
+
+    /* 7 */
+    .ej7 {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      background-color: lightcoral;
+      margin-right: 10px;
+    }
+
+    /* 8 */
+    .ej8 {
+      padding: 20px;
+      border: 2px solid gray;
+      border-radius: 10px;
+      max-width: 300px;
+      background-color: white;
+      margin: 20px 0;
+    }
+
+    /* 9 */
+    .ej9 {
+      background-color: blue;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    /* 10 */
+    .ej10 {
+      background-color: #ffdddd;
+      color: #a94442;
+      border: 1px solid #ebccd1;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 20px auto;
+      max-width: 400px;
+    }

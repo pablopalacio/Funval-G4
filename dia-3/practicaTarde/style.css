@@ -1,0 +1,64 @@
+    body {
+      background-color: #000116;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: rgb(206, 44, 93);
+      border: 1px solid #cab0b0;
+      padding: 40px;
+      width: 350px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-family: 'Grand Hotel', cursive;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0;
+      border: 1px solid #dbdbdb;
+      border-radius: 3px;
+      background-color: #fafafa;
+      font-size: 14px;
+    }
+
+    .btn {
+      background-color: #0095f6;
+      color: white;
+      border: none;
+      padding: 10px;
+      margin-top: 10px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .btn:hover {
+      background-color: #007fd1;
+    }
+
+    .login-link {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .login-link a {
+      color: #0095f6;
+      font-weight: bold;
+    }
+
+    .terms {
+      font-size: 11px;
+      color: #8e8e8e;
+      margin-top: 10px;
+    }
