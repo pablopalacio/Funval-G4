@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./output.css" />
+  <link rel="stylesheet" href="./style.css" />
+  <script src="./main.js" defer type="module"></script>
+  <title>Portafolio - Pablo Palacio</title>
+</head>
+<body class="w-full min-h-screen flex flex-col">
+  <header class="border-black dark:border-white fixed top-0 z-50 w-full p-4 shadow-xs bg-amber-600 dark:bg-slate-900 border-b">
+   <label class="max-w-screen-xl relative inline-flex items-center cursor-pointer">
+       <input type="checkbox" id="botoncito" class="sr-only peer" />
+       <div class="w-11 h-6 bg-gray-300 rounded-full peer dark:bg-gray-600 peer-checked:bg-gray-300 transition-colors">
+       </div>
+       <div class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-transform peer-checked:translate-x-full peer-checked:bg-gray-800">
+       </div>
+   </label>
+    <nav class="flex justify-between items-center p-4 rounded-2xl font-bold">
+      <button data-collapse-toggle="navbar-default" class=" md:hidden text-black p-3 rounded-2xl hover:text-white active:bg-amber-100 active:text-black">
+        <svg class="w-7 h-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/>
+        </svg>
+      </button>
+      <ul id="navbar-default" class="text-black dark:text-white  hidden md:flex gap-3 2xl:gap-8 text-sm md:text-base lg:text-lg">
+        <li class="cursor-pointer p-3 rounded-2xl hover:bg-white active:bg-amber-100 active:text-black"><a href="#acercaDeMi">Acerca de Mi.</a></li>
+        <li class="cursor-pointer p-3 rounded-2xl hover:bg-white active:bg-amber-100 active:text-black"> <a href="#Habilidades">Habilidades</a></li>
+        <a href="https://pablopalacio.github.io/Funval-G4/"class="cursor-pointer p-3 rounded-2xl hover:bg-white active:bg-amber-100 active:text-black">Proyectos</a>
+      </ul>
+    </nav>
+  </header>
+  <main class="mt-35 flex-grow p-4 bg-white dark:bg-slate-500 border dark:border-slate-500 space-y-16">
+    <section class="flex flex-col md:flex-row items-center gap-6 max-w-5xl mx-auto text-center md:text-left">
+      <div class="w-48 h-48 md:w-64 md:h-64 overflow-hidden rounded-xl bg-gray-400">
+        <img src="./img/yo2.PNG" alt="Pablo Palacio" class="dark:hidden w-full h-full object-cover object-center" />
+        <img src="./img/yoD.PNG" alt="Pablo Palacio" class="hidden dark:block w-full h-full object-cover object-center" />
+      </div>
+      <div class="space-y-4 max-w-2xl ">
+        <h1 class="text-black dark:text-white text-2xl font-bold">¿Quién soy?</h1>
+        <p class="text-black dark:text-white">
+          Mi nombre es <strong>Pablo Palacio</strong>, tengo 33 años y soy estudiante de programación en Funval Academy. Me apasiona el anime y siempre estoy en búsqueda de nuevos desafíos para subir de nivel. A lo largo del curso he descubierto y redescubierto habilidades que despertaron en mí un amor por lo desconocido de la programación.
+        </p>
+      </div>
+    </section>
+    <section class=" skills max-w-6xl mx-auto px-4 space-y-6">
+      <h2 class="text-black dark:text-white text-xl font-semibold text-center"></h2>
+        <section class="max-w-5xl mx-auto px-4 space-y-4">
+        <h2 id="habilidades" class="text-black dark:text-white text-xl font-semibold text-center">Habilidades</h2>
+        <div id="habilidades-container" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+      </section>  
+      </div>
+      <div class="text-center">
+        <a href="#" class="inline-block px-6 py-3 bg-violet-900 text-white rounded-2xl hover:bg-indigo-950">Mi CV</a>
+      </div>
+    </section>
+    <div class="text-center">
+      <a href="https://github.com/pablopalacio/Funval-G4" target="_blank" rel="noopener noreferrer">
+        <button class="border text-white border-gray-200 shadow-xs m-2 py-3 px-4 bg-black rounded-2xl hover:bg-gray-700">GitHub</button>
+      </a>
+    </div>
+      <nav>
+    <a href="index.html">Inicio</a>
+    <a href="https://github.com/pablopalacio/Funval-G4">Clases y Practicas</a>
+     </nav>
+  </main>
+  <footer class="bg-amber-950 dark:bg-slate-900 text-black py-10 mt-auto  border-gray-200 ">
+    <div class="max-w-3xl mx-auto px-4 space-y-6">
+      <h2 class="text-white text-xl font-bold text-center md:text-left">Contáctame</h2>
+      <form class="grid gap-4 text-white">
+        <input type="text" placeholder="Nombre" class="p-3 rounded bg-gray-700 placeholder-gray-400 w-full" required />
+        <input type="email" placeholder="Correo" class="p-3 rounded bg-gray-700 placeholder-gray-400 w-full" required />
+        <textarea placeholder="Mensaje" rows="4" class="p-3 rounded bg-gray-700 placeholder-gray-400 w-full" required></textarea>
+        <button type="submit" class="bg-violet-800 hover:bg-violet-800 text-black px-4 py-2 rounded w-full sm:w-auto">Enviar</button>
+      </form>
+    </div>
+  </footer>
+  <script>
+        let btn = document.querySelector("#botoncito");
+  
+        btn.addEventListener("click", function () {
+          document.documentElement.classList.toggle("dark");
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+

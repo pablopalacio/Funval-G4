@@ -1,0 +1,26 @@
+:root {
+  --color-dark: #0D1117;
+  --color-light: #FFFFFF;
+  --color-highlight: #E3FF6A;
+  --color-neon-green: #A4FF7A;
+  --color-deep-blue: #1E293B;
+  --color-soft-gray: #8892B0;
+  
+  --gradient-main: linear-gradient(135deg, #1E293B 0%, #0D1117 100%);
+}
+
+body {
+  background: var(--color-dark);
+  color: var(--color-light);
+}
+
+.button {
+  background: var(--color-highlight);
+  color: var(--color-dark);
+}
+
+.section {
+  background: var(--gradient-main);
+}
+
+

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" class="dark" id="todo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./output.css">
+    <title>Document</title>
+</head>
+<body class="h-screen flex items-center justify-center dark:bg-slate-800">
+    <h1 class="dark:text-white">Hola Mundo</h1>
+    <button class="bg-blue-600 text-white p-4 rounded-2xl ml-2" id="btn">cambio de tema</button>
+<script>
+    let botonCambio= document.querySelector("#btn")
+    let todo = document.querySelector ("#todo")
+    botonCambio.addEventListener("click", function (){
+todo.classList.toggle("dark");
+    })
+</script>
+</body>
+</html>
