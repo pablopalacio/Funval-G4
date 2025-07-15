@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./input.css">
     <link rel="stylesheet" href="./style.css">
+    
     <title>Document</title>
 </head>
 <body>
-  <header>
+  <video id="bg-video" autoplay muted loop playsinline>
+    <source src="./img/login_classic_40534656.mp4.mp4" type="video/mp4" />
+  </video>
+  <div>
+      <header class="">
     <h1>Pablo Palacio</h1>
     <button onclick="toggleDarkMode()"> Modo Oscuro</button>
   </header>
 
-  <main>
+  <main class=" z-20">
     <section class="links">
       <h2>Prácticas Generales</h2>
       <div class="link-group">
@@ -20,6 +26,7 @@
         <a href="./dia-2/practica-1/index.html">Día 2 - Tarde</a>
         <a href="./dia-3/index.html">Día 3 - Mañana</a>
         <a href="./dia-4/index.html">Día 4 - Mañana</a>
+        <a href="./dia-12/index.html">Día 12 - Mañana</a>
       </div>
     </section>
 
@@ -30,14 +37,16 @@
         <a href="./dia-3/practicaTarde/index.html">Práctica Calificada 2</a>
         <a href="./dia-4/practicaCalificada/index.html">Práctica Calificada 3</a>
         <a href="./portafolio/index.html">Mi Porafolio</a>
+        <a href="./dia-12/calificada/index.html">Calificada 5</a>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer class="">
     <p>&copy; 2025 Pablo Palacio. Todos los derechos reservados.</p>
   </footer>
 
+  </div>
   <script>
     function toggleDarkMode() {
       document.body.classList.toggle("dark-mode");
