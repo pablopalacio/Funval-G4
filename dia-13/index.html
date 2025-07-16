@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./main.js" defer></script>
+    <title>Restaurante Don Baratón</title>
+</head>
+<body>
+
+<h1>🍽️ Don Baratón - Menú del Día</h1>
+
+<label for="cliente">Nombre del cliente:</label>
+<input type="text" id="cliente" placeholder="Ingrese su nombre">
+<br><br>
+
+<label for="plato">Seleccione un plato:</label>
+<select id="plato">
+    <option value="">-- Seleccione --</option>
+    <option value="1">1. Tacos - $60</option>
+    <option value="2">2. Milanesa - $50</option>
+    <option value="3">3. Ensalada - $20</option>
+    <option value="4">4. Sopa - $10</option>
+    <option value="5">5. Pizza - $70</option>
+</select>
+<button onclick="agregarPlato()">Agregar al ticket</button>
+
+<div id="ticket" class="resumen">
+    <strong>Ticket:</strong>
+    <ol id="listaPlatos"></ol>
+    <p>Total: $<span id="total">0</span></p>
+    <p>Descuento (5%): $<span id="descuento">0</span></p>
+    <p><strong>TOTAL A PAGAR: $<span id="totalFinal">0</span></strong></p>
+    <p class="especial" id="mensajeEspecial"></p>
+</div>
+</html>

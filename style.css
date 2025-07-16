@@ -106,7 +106,6 @@ body.dark-mode .link-group a:hover {
   color: #fff;
 }
 
-/* Responsivo */
 @media (max-width: 600px) {
   h1 {
     font-size: 2rem;
@@ -131,4 +130,7 @@ body.dark-mode .link-group a:hover {
   height: 100vh;
   object-fit: cover;
   z-index: -1;
+}
+#body {
+  cursor: url('./img/Diseño\ sin\ título.png'), 0 0, auto;
 }

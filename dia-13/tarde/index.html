@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./output.css">
+    <script src="./main.js" defer></script>
+    <title>Document</title>
+</head>
+<body class="bg-green-950 text-green-100 min-h-screen flex items-center justify-center dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+  <div class="w-full max-w-md p-8 bg-green-800 dark:bg-gray-800 rounded-lg shadow-lg text-center">
+    <header class="mb-4">
+      <button 
+        onclick="toggleDarkMode()" 
+        class="bg-green-600 hover:bg-green-500 dark:bg-green-500 dark:hover:bg-green-400 text-white font-semibold px-4 py-2 rounded transition">
+        Modo Oscuro
+      </button>
+    </header>
+
+    <h1 class="text-2xl font-bold mb-6">Linterna verde</h1>
+
+    <input
+      type="number"
+      id="numero1"
+      placeholder="Primer número"
+      class="mb-3 p-2 w-full rounded text-black dark:bg-gray-700 dark:text-white dark:placeholder-gray-300"
+    />
+    <input
+      type="number"
+      id="numero2"
+      placeholder="Segundo número"
+      class="mb-4 p-2 w-full rounded text-black dark:bg-gray-700 dark:text-white dark:placeholder-gray-300"
+    />
+
+    <div class="grid grid-cols-2 gap-3 mb-4">
+      <button onclick="sumar()" class="bg-green-400 hover:bg-green-300 text-black py-2 rounded dark:bg-green-600 dark:hover:bg-green-500 dark:text-white">Sumar</button>
+      <button onclick="restar()" class="bg-green-400 hover:bg-green-300 text-black py-2 rounded dark:bg-green-600 dark:hover:bg-green-500 dark:text-white">Restar</button>
+      <button onclick="multiplicar()" class="bg-green-400 hover:bg-green-300 text-black py-2 rounded dark:bg-green-600 dark:hover:bg-green-500 dark:text-white">Multiplicar</button>
+      <button onclick="dividir()" class="bg-green-400 hover:bg-green-300 text-black py-2 rounded dark:bg-green-600 dark:hover:bg-green-500 dark:text-white">Dividir</button>
+      <button onclick="potencia()" class="bg-green-400 hover:bg-green-300 text-black py-2 rounded dark:bg-green-600 dark:hover:bg-green-500 dark:text-white">Potencia</button>
+      <button onclick="raizCuadrada()" class="bg-green-400 hover:bg-green-300 text-black py-2 rounded dark:bg-green-600 dark:hover:bg-green-500 dark:text-white">Raíz Cuadrada</button>
+    </div>
+
+    <p id="resultado" class="text-lg font-semibold mt-4">Resultado:</p>
+  </div>
+    <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
+  </body>
+</html>
+</html>
