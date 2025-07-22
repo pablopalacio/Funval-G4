@@ -1,0 +1,79 @@
+/* 
+body {
+  font-family: sans-serif;
+}
+
+.container {
+  display: flex;
+  gap: 40px;
+}
+
+.card {
+  width: 300px;
+  height: 379px;
+  border-radius: 20px;
+  background: url("./img/fondo1.jpg") center center no-repeat;
+  background-size: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: background 0.85s ease, background-size 0.85s ease;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.card:hover {
+  background: url("./img/fondo2.jpg") left center no-repeat;
+  background-size: 600px;
+}
+
+.card.alt {
+  background: url("./img/fondo2.jpg") center center no-repeat;
+  background-size: 300px;
+}
+
+.card.alt:hover {
+  background: url("./img/fondo1.jpg") right center no-repeat;
+  background-size: 600px;
+}
+
+body.dark .card {
+  background: url("./img/gojo.webp") center center no-repeat;
+  background-size: 300px;
+}
+body.dark .card:hover {
+  background: url("./img/gojo-satoru-jujutsu-kaisen.gif") center center  no-repeat;
+  background-size: 600px;
+}
+body.dark .card.alt {
+  background: url("./img/gojo.webp") center center no-repeat;
+  background-size: 300px;
+}
+
+body.dark .card.alt:hover {
+  background: url("./img/gojo-satoru-jujutsu-kaisen.gif") center center no-repeat;
+  background-size: 600px;
+} */
+
+
+body {
+  font-family: sans-serif;
+  transition: background-image 0.85s ease;
+}
+
+body.bg-body-light {
+  background-image: url("./img/fondo1.jpg");
+}
+
+body.bg-body-hover:hover.bg-body-light {
+  background-image: url("./img/fondo2.jpg");
+}
+
+body.dark.bg-body-dark {
+  background-image: url("./img/gojo.webp");
+}
+
+body.dark.bg-body-hover:hover.bg-body-dark {
+  background-image: url("./img/gojo-satoru-jujutsu-kaisen.gif");
+}
