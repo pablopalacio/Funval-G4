@@ -1,0 +1,17 @@
+.nav-item {
+  perspective: 1000px;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 8px 16px;
+  background: linear-gradient(to right, #1f2937, #374151);
+  border-radius: 8px;
+  transform: rotateX(0deg) rotateY(0deg);
+  transition: transform 0.4s ease, background 0.4s ease;
+}
+
+.nav-link:hover {
+  transform: rotateX(10deg) rotateY(10deg) scale(1.05);
+  background: linear-gradient(to right, #4b5563, #6b7280);
+}

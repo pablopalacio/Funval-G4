@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nav 3D</title>
+  <link rel="stylesheet" href="./output.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-900 text-white">
+  <nav class="bg-gray-800 p-4 shadow-lg">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">MiSitio</h1>
+      <ul class="hidden md:flex gap-6">
+        <li class="nav-item"><a href="#" class="nav-link">Inicio</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Servicios</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Acerca</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Contacto</a></li>
+      </ul>
+      <button id="menu-btn" class="md:hidden focus:outline-none text-white">☰</button>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden flex-col gap-4 mt-4 px-4">
+      <a href="#" class="nav-link">Inicio</a>
+      <a href="#" class="nav-link">Servicios</a>
+      <a href="#" class="nav-link">Acerca</a>
+      <a href="#" class="nav-link">Contacto</a>
+    </div>
+  </nav>
+
+  <script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  </script>
+
+</body>
+</html>

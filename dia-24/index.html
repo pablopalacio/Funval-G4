@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./main.js" defer></script>
+    <link rel="stylesheet" href="./output.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="flex items-center justify-between px-3 bg-red-600 py-2">
+      <img src="./image/pokebola2025.gif" alt="" class="size-14 rounded-full" />
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2560px-International_Pok%C3%A9mon_logo.svg.png"
+        alt=""
+        class="h-14"
+      />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-14 text-white"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+        />
+      </svg>
+    </header>
+
+    <main class="p-4">
+      <div id="filtros" class="flex items-center justify-center gap-8">
+        <div class="flex border border-black/50 items-center justify-center rounded-2xl px-3">
+          <input type="text" placeholder="pokemon" class="focus:outline-none" />
+          <button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div>
+          <div id="drpwn" class="flex items-center justify-center gap-2 border border-black rounded-xl px-2 cursor-pointer">
+            <h2>Tipos</h2>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m19.5 8.25-7.5 7.5-7.5-7.5"
+              />
+            </svg>
+          </div>
+          <div id="opciones" class="flex flex-col items-center justify-center border absolute mt-0.5 hidden z-30 bg-white">
+            <ul class="flex flex-col">
+              <li id="normal" class="p-2 cursor-pointer">normal</li>
+              <li id="fighting" class="p-2 cursor-pointer">lucha</li>
+              <li id="flying" class="p-2 cursor-pointer">volador</li>
+              <li id="poison" class="p-2 cursor-pointer">veneno</li>
+              <li id="ground" class="p-2 cursor-pointer">tierra</li>
+              <li id="rock" class="p-2 cursor-pointer">roca</li>
+              <li id="bug" class="p-2 cursor-pointer">bicho</li>
+              <li id="ghost" class="p-2 cursor-pointer">fantasma</li>
+              <li id="steel" class="p-2 cursor-pointer">acero</li>
+              <li id="fire" class="p-2 cursor-pointer">fuego</li>
+              <li id="water" class="p-2 cursor-pointer">agua</li>
+              <li id="grass" class="p-2 cursor-pointer">planta</li>
+              <li id="electric" class="p-2 cursor-pointer">eléctrico</li>
+              <li id="psychic" class="p-2 cursor-pointer">psíquico</li>
+              <li id="ice" class="p-2 cursor-pointer">hielo</li>
+              <li id="dragon" class="p-2 cursor-pointer">dragón</li>
+              <li id="dark" class="p-2 cursor-pointer">siniestro</li>
+              <li id="fairy" class="p-2 cursor-pointer">hada</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="pokemons-container" class="grid grid-cols-1 md:grid-cols-5 gap-4 p-4"></div>
+      <div id="contendor-btns" class="flex items-center justify-between">
+        <button class="bg-red-600 text-white p-4 rounded-2xl" id="anterior">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+          </svg>
+        </button>
+        <button class="bg-red-600 text-white p-4 rounded-2xl" id="siguiente">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+          </svg>
+        </button>
+      </div>
+    </main>
+    <div id="modal-pokemon" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 items-center justify-center hidden">
+      <div class="bg-blue-900 text-white p-6 rounded-xl relative max-w-xl w-full text-center space-y-4">
+        <button id="cerrar-modal" class="absolute top-2 right-3 text-3xl text-red-400 font-bold hover:text-red-600">&times;</button>
+        <img id="modal-img" src="" alt="pokemon" class="mx-auto w-40 h-40 object-contain" />
+        <h2 id="modal-nombre" class="text-2xl font-bold capitalize"></h2>
+        <p id="modal-id" class="text-gray-300"></p>
+        <div class="text-left space-y-1">
+          <p><strong>Altura:</strong> <span id="modal-altura"></span></p>
+          <p><strong>Peso:</strong> <span id="modal-peso"></span></p>
+          <p><strong>Habilidades:</strong> <span id="modal-habilidades"></span></p>
+          <p><strong>Tipos:</strong> <span id="modal-tipos"></span></p>
+          <p><strong>Movimientos:</strong> <span id="modal-movimientos"></span></p>
+          <p><strong>Estadísticas:</strong> <span id="modal-stats"></span></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
