@@ -10,70 +10,177 @@
 </head>
 <body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-white transition-colors duration-300">
   <header class="bg-white dark:bg-gray-800 shadow-md fixed w-full z-30">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <button id="menu-btn" class="text-gray-800 dark:text-white text-2xl focus:outline-none mr-4">☰</button>
       <div class="flex items-center space-x-2">
-        <img src="img/logo.png" alt="Logo" class="h-8">
+        <img src="./img/Untitled.png" alt="Logo" class="h-8">
         <span class="font-semibold text-sm sm:text-base">Centro de Bienestar y Autosuficiencia</span>
       </div>
-      <button id="menu-btn" class="text-gray-800 dark:text-white text-2xl focus:outline-none">
-        ☰
-      </button>
-<nav id="menu" class="hidden fixed top-16 left-0 w-64 h-full bg-white dark:bg-gray-800 shadow-lg px-6 py-4 z-40 overflow-y-auto space-y-2 transition-all duration-300">
-  <a href="#" class="block py-2 border-b border-gray-200 dark:border-gray-700 hover:text-blue-500" target="_blank" rel="noopener noreferrer">Grupos por Whatsapp</a>
-  <a href="#" class="block py-2 border-b hover:text-blue-500" target="_blank" rel="noopener noreferrer">Programas Educativos</a>
-  <a href="#" class="block py-2 border-b hover:text-blue-500" target="_blank" rel="noopener noreferrer">Programas Autoempleo</a>
-  <a href="./serviciosEmpleos.html" class="block py-2 border-b hover:text-blue-500" target="_blank" rel="noopener noreferrer">Servicios de Empleo</a>
-  <a href="https://www.estudiantefunval.org/" class="block py-2 border-b hover:text-blue-500" target="_blank" rel="noopener noreferrer">FUNVAL</a>
-  <a href="./academia.html" class="block py-2 border-b hover:text-blue-500" target="_blank" rel="noopener noreferrer">Academia Creación de Empresas</a>
-  <a href="#" class="block py-2 border-b hover:text-blue-500" target="_blank" rel="noopener noreferrer">Charlas</a>
-  <a href="https://www.englishconnect.org/es/recursos-del-alumno" class="block py-2 border-b hover:text-blue-500" target="_blank" rel="noopener noreferrer">English Connect Recursos</a>
-  <a href="./links.html" class="block py-2 border-b hover:text-blue-500" target="_blank" rel="noopener noreferrer">Links de empleo en Inglés</a>
-  <a href="#" class="block py-2 border-b hover:text-blue-500" target="_blank" rel="noopener noreferrer">Buscadores Argentina</a>
-  <a href="#" class="block py-2 border-b hover:text-blue-500" target="_blank" rel="noopener noreferrer">Buscadores Chile</a>
-  <a href="https://www.youtube.com/@byasociados" class="block py-2 border-b hover:text-blue-500" target="_blank" rel="noopener noreferrer">Canal YouTube B&A</a>
-  <a href="#" class="block py-2 hover:text-blue-500" target="_blank" rel="noopener noreferrer">Sección para Líderes</a>
-</nav>
+    </div>
+    <nav id="menu" class="hidden fixed top-16 left-0 w-64 h-full bg-white dark:bg-gray-800 shadow-lg px-6 py-4 z-40 overflow-y-auto space-y-2 transition-all duration-300">
+      <button id="cerrar-menu" class="text-2xl text-gray-800 dark:text-white focus:outline-none absolute top-2 right-2">✕</button>
+      <a href="#" class="menu-link block py-2 border-b hover:text-blue-500" data-target="home-content">Inicio</a>
+      <a href="#" class="menu-link block py-2 border-b hover:text-blue-500" data-target="servicios-content">Servicios de Empleo</a>
+      <a href="#" class="menu-link block py-2 border-b hover:text-blue-500" data-target="academia-content">Academia Creación de Empresas</a>
+      <a href="#" class="menu-link block py-2 border-b hover:text-blue-500" data-target="links-content">Links de empleo en Inglés</a>
+    </nav>
   </header>
-  <section class="pt-24 text-center px-4">
-    <img src="img/logo.png" alt="Logo B&A" class="mx-auto w-24 mb-4">
-    <h2 class="text-lg text-blue-800 font-semibold">Centro de Bienestar y Autosuficiencia</h2>
-    <div class="bg-yellow-400 rounded-xl shadow-md p-6 inline-block mt-4 max-w-xl">
-      <h3 class="text-xl sm:text-2xl font-bold text-gray-900">Charlas de Apoyo a la Autosuficiencia Personal</h3>
-      <p class="mt-2 italic text-gray-800">Miércoles 20hs Chile - 21hs Arg. Pry. Ury</p>
+  <main class="pt-24 max-w-6xl mx-auto px-4 py-12 space-y-10">
+    <section id="home-content">
+      <div class="text-center px-4">
+        <img src="./img/Untitled.png" alt="Logo B&A" class="mx-auto w-24 mb-4">
+        <h2 class="text-lg text-blue-800 font-semibold">Centro de Bienestar y Autosuficiencia</h2>
+        <div class="bg-yellow-400 rounded-xl shadow-md p-6 inline-block mt-4 max-w-xl">
+          <h3 class="text-xl sm:text-2xl font-bold text-gray-900">Charlas de Apoyo a la Autosuficiencia Personal</h3>
+          <p class="mt-2 italic text-gray-800">Miércoles 20hs Chile - 21hs Arg. Pry. Ury</p>
+        </div>
+      </div>
+      <h2 class="text-center text-2xl font-semibold text-blue-700 mt-10 mb-2">Aquí comienza tu camino hacia la Autosuficiencia</h2>
+      <p class="text-center text-sm text-gray-500 mb-8">Haz click en alguna de las áreas abajo para encontrar recursos que puedan ayudarte</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden">
+          <img src="./img/charlas.png" alt="Charlas" class="w-full h-48 object-cover">
+          <button onclick="location.href='link1.html'" class="w-full py-3 bg-green-500 hover:bg-green-600 text-white font-semibold">Grupos y talleres de autosuficiencia</button>
+        </div>
+        <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden">
+          <img src="./img/emprendimiento.png" alt="Emprendimiento" class="w-full h-48 object-cover">
+          <button onclick="location.href='link2.html'" class="w-full py-3 bg-rose-500 hover:bg-rose-600 text-white font-semibold">Programas de emprendimiento</button>
+        </div>
+        <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden">
+          <img src="./img/educacion.png" alt="Educación" class="w-full h-48 object-cover">
+          <button onclick="location.href='link3.html'" class="w-full py-3 bg-sky-500 hover:bg-sky-600 text-white font-semibold">Programas Educativos</button>
+        </div>
+        <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden">
+          <img src="./img/centroEmpleo.png" alt="Centro de empleos" class="w-full h-48 object-cover">
+          <button onclick="location.href='link4.html'" class="w-full py-3 bg-gray-300 hover:bg-gray-400 text-black font-semibold">Centro de empleos</button>
+        </div>
+        <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden">
+          <img src="./img/solicitarAyuda.png" alt="Ayuda personalizada" class="w-full h-48 object-cover">
+          <button onclick="location.href='link5.html'" class="w-full py-3 bg-cyan-400 hover:bg-cyan-500 text-white font-semibold">Solicita ayuda personalizada</button>
+        </div>
+        <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden">
+          <img src="./img/familia.png" alt="Servicios para la familia" class="w-full h-48 object-cover">
+          <button onclick="location.href='link6.html'" class="w-full py-3 bg-pink-400 hover:bg-pink-500 text-white font-semibold">Servicios para la familia</button>
+        </div>
+      </div>
+    </section>
+<section id="servicios-content" class="hidden px-4 py-12 bg-gray-50 dark:bg-gray-900">
+  <h1 class="text-3xl font-bold text-center text-blue-700 dark:text-white mb-10">
+    Servicios para tu Empleo
+  </h1>
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 text-center space-y-4 transition hover:scale-105">
+      <img src="./img/ayudapersonalizada.png" alt="Ayuda personalizada" class="mx-auto rounded-lg">
+      <p class="font-medium text-gray-700 dark:text-gray-200">Ayuda personalizada para empleo, autoempleo o educación</p>
+      <a href="https://employmentservices.churchofjesuschrist.org/jobSeekers?lang=spa" target="_blank" rel="noopener noreferrer"
+         class="inline-block bg-blue-100 text-blue-800 font-semibold px-4 py-2 rounded-lg hover:bg-blue-200 transition">
+        Solicita ayuda personalizada
+      </a>
     </div>
-  </section>
-  <main class="max-w-6xl mx-auto px-4 py-12">
-    <h2 class="text-center text-2xl font-semibold text-blue-700 mb-2">Aquí comienza tu camino hacia la Autosuficiencia</h2>
-    <p class="text-center text-sm text-gray-500 mb-8">Haz click en alguna de las áreas abajo para encontrar recursos que puedan ayudarte</p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden">
-        <img src="img/charlas.jpg" alt="Charlas" class="w-full h-48 object-cover">
-        <button onclick="location.href='link1.html'" class="w-full py-3 bg-green-500 hover:bg-green-600 text-white font-semibold">Grupos y talleres de autosuficiencia</button>
-      </div>
-      <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden">
-        <img src="img/emprendimiento.jpg" alt="Emprendimiento" class="w-full h-48 object-cover">
-        <button onclick="location.href='link2.html'" class="w-full py-3 bg-rose-500 hover:bg-rose-600 text-white font-semibold">Programas de emprendimiento</button>
-      </div>
-      <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden">
-        <img src="img/educacion.jpg" alt="Educación" class="w-full h-48 object-cover">
-        <button onclick="location.href='link3.html'" class="w-full py-3 bg-sky-500 hover:bg-sky-600 text-white font-semibold">Programas Educativos</button>
-      </div>
-      <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden">
-        <img src="img/empleo.jpg" alt="Centro de empleos" class="w-full h-48 object-cover">
-        <button onclick="location.href='link4.html'" class="w-full py-3 bg-gray-300 hover:bg-gray-400 text-black font-semibold">Centro de empleos</button>
-      </div>
-      <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden">
-        <img src="img/ayuda.jpg" alt="Ayuda personalizada" class="w-full h-48 object-cover">
-        <button onclick="location.href='link5.html'" class="w-full py-3 bg-cyan-400 hover:bg-cyan-500 text-white font-semibold">Solicita ayuda personalizada</button>
-      </div>
-      <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden">
-        <img src="img/familia.jpg" alt="Servicios para la familia" class="w-full h-48 object-cover">
-        <button onclick="location.href='link6.html'" class="w-full py-3 bg-pink-400 hover:bg-pink-500 text-white font-semibold">Servicios para la familia</button>
-      </div>
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 text-center space-y-4 transition hover:scale-105">
+      <img src="./img/talleres.png" alt="CV" class="mx-auto rounded-lg">
+      <p class="font-medium text-gray-700 dark:text-gray-200">Mejora tu CV, realiza un taller interactivo</p>
+      <a href="https://360.articulate.com/review/content/0d52558d-073f-4957-8c18-4c2ad4aebd4c/review" target="_blank" rel="noopener noreferrer"
+         class="inline-block bg-green-100 text-green-800 font-semibold px-4 py-2 rounded-lg hover:bg-green-200 transition">
+        Taller interactivo
+      </a>
     </div>
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 text-center space-y-4 transition hover:scale-105">
+      <img src="./img/linkedin.png" alt="LinkedIn" class="mx-auto rounded-lg">
+      <p class="font-medium text-gray-700 dark:text-gray-200">Crea tu perfil de LinkedIn</p>
+      <a href="https://360.articulate.com/review/content/115e438c-ecfb-43ee-9bad-48b4ad85d4e5/review" target="_blank" rel="noopener noreferrer"
+         class="inline-block bg-indigo-100 text-indigo-800 font-semibold px-4 py-2 rounded-lg hover:bg-indigo-200 transition">
+        Perfil de LinkedIn
+      </a>
+    </div>
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 text-center space-y-4 transition hover:scale-105">
+      <img src="./img/charlas.png" alt="Charlas" class="mx-auto rounded-lg">
+      <p class="font-medium text-gray-700 dark:text-gray-200">Charlas cada miércoles 21:00 hrs</p>
+      <a href="https://chat.whatsapp.com/KP0yoHtlAyjKkKKy9eHvJs" target="_blank" rel="noopener noreferrer"
+         class="inline-block bg-orange-100 text-orange-800 font-semibold px-4 py-2 rounded-lg hover:bg-orange-200 transition">
+        Unirse a las charlas
+      </a>
+    </div>
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 text-center space-y-4 transition hover:scale-105">
+      <img src="./img/centroEmpleo.png" alt="Cómo buscar empleo" class="mx-auto rounded-lg">
+      <p class="font-medium text-gray-700 dark:text-gray-200">Cómo buscar empleo en internet</p>
+      <a href="https://www.youtube.com/watch?v=5S4rCpt3zmQ&feature=youtu.be" target="_blank" rel="noopener noreferrer"
+         class="inline-block bg-purple-100 text-purple-800 font-semibold px-4 py-2 rounded-lg hover:bg-purple-200 transition">
+        Buscar empleo
+      </a>
+    </div>
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 text-center space-y-4 transition hover:scale-105">
+      <img src="./img/charlas.png" alt="Charlas grabadas" class="mx-auto rounded-lg">
+      <p class="font-medium text-gray-700 dark:text-gray-200">Charlas de empleo pregrabadas</p>
+      <a href="https://www.youtube.com/playlist?list=PLuIHaBmW5J4KUitTl-o3iwtCPSsNTWJd4" target="_blank" rel="noopener noreferrer"
+         class="inline-block bg-gray-200 text-gray-800 font-semibold px-4 py-2 rounded-lg hover:bg-gray-300 transition">
+        Ver charlas
+      </a>
+    </div>
+  </div>
+</section>
+  <section id="academia-content" class="hidden">
+  <div class="grid md:grid-cols-2 gap-6 items-start text-center">
+    <a href="https://sites.google.com/view/vivelaculturadelexito/la-academia" target="_blank" class="block bg-white rounded-lg p-4 hover:shadow-xl hover:scale-[1.02] transition space-y-4">
+      <img src="./img/academy.png" alt="Academia" class="rounded-lg mx-auto">
+      <p class="text-xl font-semibold text-[#155e75]">The Academy for Creating Enterprise</p>
+      <p class="text-sm inline-block bg-[#155e75] text-white px-4 py-1.5 rounded">Conoce más sobre la academia</p>
+    </a>
+    <a href="https://www.youtube.com/watch?si=E127fiuoQ-TA8oOG&v=0bflgHF5cs8&feature=youtu.be" target="_blank" class="block bg-white rounded-lg p-4 hover:shadow-xl hover:scale-[1.02] transition space-y-4">
+      <img src="./img/queEsLaAcademy.png" alt="Emprendedora" class="rounded-lg mx-auto">
+      <p class="text-xl font-semibold text-[#155e75]">Qué es la academia para la creación de empresas</p>
+      <p class="text-sm inline-block bg-[#155e75] text-white px-4 py-1.5 rounded">Qué es la academia para la creación de empresas</p>
+    </a>
+  </div>
+  <div class="text-center mt-12 border-t pt-8 space-y-6">
+    <h2 class="text-2xl font-bold">Participa de un grupo de la Academia</h2>
+    <div class="space-y-4">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0V2_-MvoyDk5o1ndBPawdFtUaJj5QnfXJUdwvtiwpzGyZ4A/viewform" class="inline-block bg-[#155e75] text-white py-2 px-4 text-sm rounded hover:bg-[#0c4a6e] transition">Anota tus datos aquí</a>
+      <a href="https://linktr.ee/BienestaryAutosuficiencia.sas" class="inline-block bg-gray-400 text-white py-2 px-4 text-sm rounded hover:bg-gray-500 transition">Consulta con tu gerente</a>
+    </div>
+  </div>
+</section>
+    <section id="links-content" class="hidden">
+      <section class="space-y-6">
+  <div class="text-center space-y-2 max-w-2xl mx-auto">
+    <p>Busque empleos que se alineen con sus intereses y capacidades.</p>
+    <p>Si cumple con los requisitos principales, postúlese a través del link.</p>
+    <p>Antes de enviar su CV, pida a un mentor que lo revise para asegurarse de que esté bien enfocado.</p>
+    <a href="https://www.efset.org/english-certificate/" target="_blank"
+       class="inline-block mt-2 bg-gray-300 text-gray-800 px-6 py-2 rounded hover:bg-gray-400 transition">
+      Test para saber tu nivel de inglés
+    </a>
+  </div>
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 text-center">
+    <a href="https://www.isotalent.com/" class="enlace-empleo border">isoTALENT</a>
+    <a href="https://www.joincrescendo.com/" class="enlace-empleo border">crescendo</a>
+    <a href="https://getbluebirdsolutions.com/" class="enlace-empleo border">Bluebird</a>
+    <a href="https://solvoglobal.com/" class="enlace-empleo border">SOLVO</a>
+    <a href="https://www.upwork.com/" class="enlace-empleo border">Upwork</a>
+    <a href="https://www.kajae.com/" class="enlace-empleo border">kajae</a>
+    <a href="https://academy.hubspot.com/" class="enlace-empleo border">HubSpot</a>
+    <a href="https://flyhire.net/" class="enlace-empleo border">Fly Higher</a>
+    <a href="https://www.netacad.com/" class="enlace-empleo border">CISCO</a>
+    <a href="https://bridgehiring.com/" class="enlace-empleo border">BRIDGEHIRING</a>
+    <a href="https://remotehire.com/" class="enlace-empleo border">RemoteHire</a>
+    <a href="https://www.hirebloom.com/" class="enlace-empleo border">bloom</a>
+    <a href="https://zconnect.biz/" class="enlace-empleo border">Connect</a>
+    <a href="https://www.hireteem.com/" class="enlace-empleo border">TEM</a>
+    <a href="https://www.hiremango.com/" class="enlace-empleo border">HireMango</a>
+    <a href="https://www.fiverr.com/" class="enlace-empleo border">fiverr</a>
+    <a href="https://hrgsearchteam.com/" class="enlace-empleo border">HRG SEARCH</a>
+    <a href="https://www.accenture.com/ar-es" class="enlace-empleo border">accenture</a>
+  </div>
+</section>
+      <section class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 text-center mt-6">
+      </section>
+      <div class="text-center mt-6">
+        <a href="https://linktr.ee/BienestaryAutosuficiencia.sas" target="_blank" class="inline-block bg-gray-400 text-white px-6 py-2 rounded hover:bg-gray-500 transition">Consulta con tu gerente de autosuficiencia</a>
+      </div>
+    </section>
   </main>
   <footer class="text-center py-4 text-xs text-gray-500">
-    © 2022 por Intellectual Reserve, Inc. Todos los derechos reservados para funval.
+    © 2022 por Intellectual Reserve, Inc. Todos los derechos reservados para ByA.
   </footer>
 </body>
 </html>
