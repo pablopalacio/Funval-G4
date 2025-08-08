@@ -227,7 +227,6 @@ authModal.addEventListener('click', (e) => {
 });
 
 async function loginAPI(username, password) {
-  // Usar el endpoint /login como en el ejemplo del profesor
   const res = await fetch(`${API_BASE}/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -279,7 +278,6 @@ authSubmit.addEventListener('click', async () => {
       authModal.classList.add('hidden');
       authBtn.textContent = `Cerrar sesión (${username})`;
       alert(`Bienvenido, ${username}. Token: ${token}`);
-      // Mostrar el token en consola y en pantalla
       console.log('Token:', token);
       // Mostrar el token en la página
       let tokenDiv = document.getElementById('token-div');
@@ -299,11 +297,11 @@ authSubmit.addEventListener('click', async () => {
     } else {
       // REGISTRO forzado para usuario kevindandrew
       const newUser = {
-        nombre_usuario: 'kevindandrew',
-        nombre_completo: 'Kevin Andrew',
-        correo: 'user@example.com',
-        telefono: '123456789',
-        contraseña: '123456789',
+        nombre_usuario: 'username',
+        nombre_completo: nombreCompleto,
+        correo: correo,
+        telefono: telefono,
+        contraseña: password,
         rol: 'comprador'
       };
 
