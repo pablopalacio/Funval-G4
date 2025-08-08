@@ -2,5 +2,12 @@
   {
     "username": "admin",
     "password": "1234"
-  }
+  },
+  {
+  "nombre_usuario": "string",
+  "nombre_completo": "string",
+  "correo": "user@example.com",
+  "telefono": "string",
+  "contraseña": "string"
+}
 ]

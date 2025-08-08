@@ -10,18 +10,40 @@
   <link rel="stylesheet" href="./background.css" />
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200">
-  <div id="auth-modal" class="fixed inset-0 z-50 bg-black/50 flex items-center justify-center hidden">
-    <div class="bg-white dark:bg-gray-900 p-6 rounded-md shadow-md w-full max-w-sm space-y-4">
-      <h2 id="auth-title" class="text-lg font-semibold text-center">Iniciar Sesión</h2>
-      <input type="text" id="auth-username" placeholder="Usuario" class="w-full p-2 border rounded dark:bg-gray-800 dark:border-gray-600">
-      <input type="password" id="auth-password" placeholder="Contraseña" class="w-full p-2 border rounded dark:bg-gray-800 dark:border-gray-600">
-      <div id="auth-confirm-wrap" class="hidden">
-        <input type="password" id="auth-password-confirm" placeholder="Confirmar contraseña" class="w-full p-2 border rounded dark:bg-gray-800 dark:border-gray-600">
-      </div>
-      <button id="auth-submit" class="w-full py-2 bg-indigo-600 text-white rounded hover:bg-indigo-500">Continuar</button>
-      <p id="auth-switch-text" class="text-sm text-center text-gray-600 dark:text-gray-400 cursor-pointer underline">¿No tenés cuenta? Registrate</p>
-      <p id="auth-error" class="text-sm text-center text-red-600"></p>
+<div id="auth-modal" class="fixed inset-0 z-50 bg-black/50 flex items-center justify-center">
+  <div class="bg-white dark:bg-gray-900 p-6 rounded-md shadow-md w-full max-w-sm space-y-4">
+    <h2 id="auth-title" class="text-lg font-semibold text-center">Registrarse</h2>
+
+    <input type="text" id="auth-username" placeholder="Elegí un nombre de usuario" class="w-full p-2 border rounded dark:bg-gray-800 dark:border-gray-600">
+    
+    <div id="auth-nombre-completo-wrap">
+      <input type="text" id="auth-nombre-completo" placeholder="Ingresá tu nombre completo" class="w-full p-2 border rounded dark:bg-gray-800 dark:border-gray-600">
     </div>
+    
+    <div id="auth-correo-wrap">
+      <input type="email" id="auth-correo" placeholder="Ingresá tu correo electrónico" class="w-full p-2 border rounded dark:bg-gray-800 dark:border-gray-600">
+    </div>
+    
+    <div id="auth-telefono-wrap">
+      <input type="text" id="auth-telefono" placeholder="Ingresá tu número de teléfono" class="w-full p-2 border rounded dark:bg-gray-800 dark:border-gray-600">
+    </div>
+    <input type="password" id="auth-password" placeholder="Creá una contraseña" class="w-full p-2 border rounded dark:bg-gray-800 dark:border-gray-600">
+    <div id="auth-password-confirm-wrap">
+      <input type="password" id="auth-password-confirm" placeholder="Confirmá tu contraseña" class="w-full p-2 border rounded dark:bg-gray-800 dark:border-gray-600">
+    </div>
+    <div id="auth-rol-wrap">
+      <select id="auth-rol" class="w-full p-2 border rounded dark:bg-gray-800 dark:border-gray-600">
+        <option value="comprador" selected>Comprador</option>
+      </select>
+    </div>
+    <button id="auth-submit" class="w-full py-2 bg-indigo-600 text-white rounded hover:bg-indigo-500">Registrarse</button>
+    <p id="auth-switch-text" class="text-sm text-center text-gray-600 dark:text-gray-400 cursor-pointer underline">
+      ¿Ya tenés cuenta? Iniciá sesión
+    </p>
+    <p id="auth-error" class="text-sm text-center text-red-600"></p>
+  </div>
+</div>
+</div>
   </div>
   <div class="fixed bottom-4 right-4 z-50">
     <button id="auth-btn" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-500">Iniciar Sesión</button>

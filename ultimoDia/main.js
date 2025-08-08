@@ -26,8 +26,6 @@ const cartTotalPanel = document.getElementById('cart-total-panel');
 const clearCartBtn = document.getElementById('clear-cart');
 const checkoutBtn = document.getElementById('checkout-btn');
 const darkToggle = document.getElementById('dark-toggle');
-
-
 const authModal = document.getElementById('auth-modal');
 const authTitle = document.getElementById('auth-title');
 const authUsername = document.getElementById('auth-username');
@@ -38,7 +36,6 @@ const authSubmit = document.getElementById('auth-submit');
 const authSwitchText = document.getElementById('auth-switch-text');
 const authError = document.getElementById('auth-error');
 const authBtn = document.getElementById('auth-btn');
-
 const imagenesLocales = {
   'Aceite Vegetal': 'aceite-vegetal.png',
   'Agua Mineral': 'agua-mineral.png',
@@ -117,18 +114,14 @@ let products = [];
 let filteredProducts = [];
 let types = new Set();
 let cart = {}; // { productId: {product, qty} }
-
 let isLoginMode = true;
 let currentUser = null;
-
 let productosConImagenFaltante = [];
 
 const formatCurrency = (n) => {
   const v = Number(n || 0);
   return v.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
 };
-
-
 const saveCart = () => localStorage.setItem('palacio_cart_v1', JSON.stringify(cart));
 const loadCart = () => {
   try {
@@ -137,12 +130,9 @@ const loadCart = () => {
     cart = {};
   }
 };
-
-
 function guardarUsuarioLocal(user) {
   localStorage.setItem('palacio_user', JSON.stringify(user));
 }
-
 function cargarUsuarioLocal() {
   try {
     return JSON.parse(localStorage.getItem('palacio_user'));
@@ -150,7 +140,6 @@ function cargarUsuarioLocal() {
     return null;
   }
 }
-
 function logout() {
   currentUser = null;
   localStorage.removeItem('palacio_user');
@@ -182,13 +171,10 @@ darkToggle.addEventListener('click', () => {
   localStorage.setItem('palacio_dark', isDark ? '1' : '0');
 });
 
-
 cartBtn.addEventListener('click', () => {
   cartPanel.classList.remove('translate-x-full');
 });
 cartClose.addEventListener('click', () => cartPanel.classList.add('translate-x-full'));
-
-
 clearCartBtn.addEventListener('click', () => {
   if (!confirm('Vaciar carrito?')) return;
   cart = {};
@@ -196,12 +182,10 @@ clearCartBtn.addEventListener('click', () => {
   renderCart();
 });
 
-
 checkoutBtn.addEventListener('click', () => {
   if (Object.keys(cart).length === 0) return alert('El carrito está vacío');
   alert('¡Gracias por tu compra demo! (No hay pago real implementado)');
 });
-
 
 searchInput?.addEventListener('input', applyFilters);
 searchInputMobile?.addEventListener('input', (e) => {
@@ -223,7 +207,6 @@ authBtn.addEventListener('click', () => {
     showAuthModal(true);
   }
 });
-
 function showAuthModal(isLogin = true) {
   isLoginMode = isLogin;
   authModal.classList.remove('hidden');
@@ -255,15 +238,14 @@ async function loginAPI(username, password) {
   return await res.json();
 }
 
-async function registerAPI(username, password) {
-  const res = await fetch(`${API_BASE}/usuarios`, {
+async function registerAPI(newUser) {
+  const res = await fetch(`${API_BASE}/auth/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username, password }),
+    body: JSON.stringify(newUser),
   });
   if (!res.ok) {
-    const errorData = await res.json();
-    throw new Error(errorData.message || 'Error al registrar usuario');
+    throw new Error('Error al registrar usuario');
   }
   return await res.json();
 }
@@ -273,8 +255,13 @@ authSubmit.addEventListener('click', async () => {
   const password = authPassword.value.trim();
   const confirm = authPasswordConfirm.value.trim();
 
-  if (!username || !password) {
+  if (!username || !password || (!isLoginMode && !confirm)) {
     authError.textContent = 'Todos los campos son obligatorios';
+    return;
+  }
+
+  if (!isLoginMode && password !== confirm) {
+    authError.textContent = 'Las contraseñas no coinciden';
     return;
   }
 
@@ -283,6 +270,7 @@ authSubmit.addEventListener('click', async () => {
 
   try {
     if (isLoginMode) {
+      // LOGIN
       const userData = await loginAPI(username, password);
       currentUser = userData;
       guardarUsuarioLocal(userData);
@@ -290,17 +278,33 @@ authSubmit.addEventListener('click', async () => {
       authBtn.textContent = `Cerrar sesión (${userData.username || username})`;
       alert(`Bienvenido, ${userData.username || username}`);
     } else {
-      if (password !== confirm) {
-        authError.textContent = 'Las contraseñas no coinciden';
+      // REGISTRO
+      const nombreCompleto = prompt("Ingrese su nombre completo:")?.trim();
+      const correo = prompt("Ingrese su correo electrónico:")?.trim();
+      const telefono = prompt("Ingrese su teléfono:")?.trim();
+      const rol = "comprador";
+
+      if (!nombreCompleto || !correo || !telefono) {
+        authError.textContent = 'Todos los campos son obligatorios';
         authSubmit.disabled = false;
         return;
       }
-      const newUser = await registerAPI(username, password);
-      currentUser = newUser;
-      guardarUsuarioLocal(newUser);
+
+      const newUser = {
+        nombre_usuario: username,
+        nombre_completo: nombreCompleto,
+        correo: correo,
+        telefono: telefono,
+        contraseña: password,
+        rol: rol
+      };
+
+      const createdUser = await registerAPI(newUser);
+      currentUser = createdUser;
+      guardarUsuarioLocal(createdUser);
       authModal.classList.add('hidden');
-      authBtn.textContent = `Cerrar sesión (${newUser.username || username})`;
-      alert(`Registrado exitosamente como ${newUser.username || username}`);
+      authBtn.textContent = `Cerrar sesión (${createdUser.username || username})`;
+      alert(`Registrado exitosamente como ${createdUser.username || username}`);
     }
     bloquearSiNoHayUsuario();
   } catch (err) {
@@ -332,7 +336,6 @@ function bloquearSiNoHayUsuario() {
     }
   });
 }
-
 
 function mostrarProductosImagenFaltante() {
   const contenedor = document.getElementById('productos-imagen-faltante');
