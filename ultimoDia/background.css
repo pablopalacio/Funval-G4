@@ -5,14 +5,16 @@
     inset: 0;
     z-index: -1;
     background-image: url('img/un_palacio_de_alimentos_con_un_pueblo.jpeg');
-    background-size: cover;
-    background-position: center;
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    background-position: center; 
     opacity: 0.75;
     pointer-events: none;
-    transition: background-image 0.3s ease;
+    transition: background-image 0.3s ease, background-position 0.3s ease;
   }
 
   html.dark body::before {
     background-image: url('img/un_palacio_de_comida_con_un_pueblo.jpeg');
+    background-position: center;
   }
 }

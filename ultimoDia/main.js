@@ -518,6 +518,7 @@ async function loadProducts() {
     emptyState.classList.remove('hidden');
   }
 }
+const categoriasHigiene = ['Papel Higiénico', 'Pasta Dental', 'Jabón Líquido', 'Shampoo', 'Desodorante', 'Colgate', 'Rexona', 'Pepsodent', 'Pack Jabones', 'Shampoo Bolsa', 'Rexona Clinical', 'Rexona Invisible'];
 function populateTypesFilter() {
   typesList.innerHTML = '';
   filterType.innerHTML = '<option value="">Todos los tipos</option>';
