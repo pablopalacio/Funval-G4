@@ -227,10 +227,11 @@ authModal.addEventListener('click', (e) => {
 });
 
 async function loginAPI(username, password) {
-  const res = await fetch(`${API_BASE}/auth/login`, {
+  // Usar el endpoint /login como en el ejemplo del profesor
+  const res = await fetch(`${API_BASE}/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username, password }),
+    body: JSON.stringify({ nombre_usuario: username, contraseña: password }),
   });
   if (!res.ok) {
     throw new Error('Usuario o contraseña incorrectos');
@@ -271,18 +272,36 @@ authSubmit.addEventListener('click', async () => {
   try {
     if (isLoginMode) {
       // LOGIN
-      const userData = await loginAPI(username, password);
-      currentUser = userData;
-      guardarUsuarioLocal(userData);
+      const loginResponse = await loginAPI(username, password);
+      const token = loginResponse.access_token;
+      currentUser = { nombre_usuario: username, token };
+      guardarUsuarioLocal(currentUser);
       authModal.classList.add('hidden');
-      authBtn.textContent = `Cerrar sesión (${userData.username || username})`;
-      alert(`Bienvenido, ${userData.username || username}`);
+      authBtn.textContent = `Cerrar sesión (${username})`;
+      alert(`Bienvenido, ${username}. Token: ${token}`);
+      // Mostrar el token en consola y en pantalla
+      console.log('Token:', token);
+      // Mostrar el token en la página
+      let tokenDiv = document.getElementById('token-div');
+      if (!tokenDiv) {
+        tokenDiv = document.createElement('div');
+        tokenDiv.id = 'token-div';
+        tokenDiv.style.position = 'fixed';
+        tokenDiv.style.bottom = '10px';
+        tokenDiv.style.right = '10px';
+        tokenDiv.style.background = '#222';
+        tokenDiv.style.color = '#fff';
+        tokenDiv.style.padding = '10px';
+        tokenDiv.style.zIndex = '9999';
+        document.body.appendChild(tokenDiv);
+      }
+      tokenDiv.textContent = `Token: ${token}`;
     } else {
-      // REGISTRO
-      const nombreCompleto = prompt("Ingrese su nombre completo:")?.trim();
-      const correo = prompt("Ingrese su correo electrónico:")?.trim();
-      const telefono = prompt("Ingrese su teléfono:")?.trim();
-      const rol = "comprador";
+      // REGISTRO usando los campos del formulario
+      const nombreCompleto = document.getElementById('auth-nombre-completo').value.trim();
+      const correo = document.getElementById('auth-correo').value.trim();
+      const telefono = document.getElementById('auth-telefono').value.trim();
+      const rol = document.getElementById('auth-rol')?.value || "comprador";
 
       if (!nombreCompleto || !correo || !telefono) {
         authError.textContent = 'Todos los campos son obligatorios';
