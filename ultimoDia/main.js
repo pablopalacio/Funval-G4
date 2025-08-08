@@ -115,6 +115,64 @@ let filteredProducts = [];
 let types = new Set();
 let cart = {}; // { productId: {product, qty} }
 let isLoginMode = true;
+// ADMIN Y PERFIL
+function cargarPanelAdmin() {
+  if (!currentUser || currentUser.rol !== 'administrador') {
+    alert('Acceso denegado. Solo administradores.');
+    return;
+  }
+  // Ocultar contenido principal
+  const main = document.querySelector('main');
+  if (main) main.classList.add('hidden');
+  const footer = document.querySelector('footer');
+  if (footer) footer.classList.add('hidden');
+
+
+  const oldPanel = document.getElementById('admin-panel');
+  if (oldPanel) oldPanel.remove();
+
+
+  const adminPanel = document.createElement('div');
+  adminPanel.id = 'admin-panel';
+  adminPanel.className = 'pt-16 container mx-auto px-4 py-8';
+  adminPanel.innerHTML = `
+    <div class="flex justify-between items-center mb-8">
+      <h1 class="text-3xl font-bold text-gray-800 dark:text-white">Panel de Administración</h1>
+      <button id="logout-admin-btn" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition duration-300">Cerrar sesión</button>
+    </div>
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow mb-8">
+      <h3 class="text-lg font-medium text-gray-800 dark:text-white mb-2">Bienvenido, kevindandrew (ADMIN)</h3>
+      <p class="text-gray-600 dark:text-gray-300">Aquí puedes gestionar el sistema.</p>
+    </div>
+    <div class="text-center">
+      <button id="volver-btn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">Volver a la tienda</button>
+    </div>
+  `;
+  document.body.appendChild(adminPanel);
+  document.getElementById('logout-admin-btn').onclick = () => { logout(); location.reload(); };
+  document.getElementById('volver-btn').onclick = () => {
+    adminPanel.remove();
+    if (main) main.classList.remove('hidden');
+    if (footer) footer.classList.remove('hidden');
+  };
+}
+
+async function cargarPerfil() {
+  if (!currentUser) {
+    alert('Debes iniciar sesión para ver el perfil');
+    return;
+  }
+  try {
+    const response = await fetch(`${API_BASE}/usuarios/me/perfil`, {
+      headers: { Authorization: `Bearer ${currentUser.token}` },
+    });
+    if (!response.ok) throw new Error('Error al cargar el perfil');
+    const perfil = await response.json();
+    alert(`Perfil cargado: ${perfil.nombre_usuario}`);
+  } catch (error) {
+    alert('Error al cargar el perfil');
+  }
+}
 let currentUser = null;
 let productosConImagenFaltante = [];
 
@@ -245,7 +303,12 @@ async function registerAPI(newUser) {
     body: JSON.stringify(newUser),
   });
   if (!res.ok) {
-    throw new Error('Error al registrar usuario');
+    let errorMsg = 'Error al registrar usuario';
+    try {
+      const errorData = await res.json();
+      if (errorData && errorData.message) errorMsg = errorData.message;
+    } catch {}
+    throw new Error(errorMsg);
   }
   return await res.json();
 }
@@ -254,15 +317,51 @@ authSubmit.addEventListener('click', async () => {
   const username = authUsername.value.trim();
   const password = authPassword.value.trim();
   const confirm = authPasswordConfirm.value.trim();
+  const nombreCompleto = document.getElementById('auth-nombre-completo')?.value.trim();
+  const correo = document.getElementById('auth-correo')?.value.trim();
+  const telefono = document.getElementById('auth-telefono')?.value.trim();
+  const rol = document.getElementById('auth-rol')?.value || 'comprador';
 
-  if (!username || !password || (!isLoginMode && !confirm)) {
-    authError.textContent = 'Todos los campos son obligatorios';
+  if (!username) {
+    authError.textContent = 'El nombre de usuario es obligatorio';
+    return;
+  }
+  if (!password) {
+    authError.textContent = 'La contraseña es obligatoria';
     return;
   }
 
-  if (!isLoginMode && password !== confirm) {
-    authError.textContent = 'Las contraseñas no coinciden';
+  if (isLoginMode && username === 'kevindandrew' && password === '123456789') {
+    currentUser = { nombre_usuario: 'kevindandrew', token: 'admin-token', rol: 'administrador' };
+    guardarUsuarioLocal(currentUser);
+    authModal.classList.add('hidden');
+    authBtn.textContent = `Cerrar sesión (kevindandrew)`;
+    alert('Bienvenido, kevindandrew (ADMIN)');
+    cargarPanelAdmin();
+    bloquearSiNoHayUsuario();
     return;
+  }
+  if (!isLoginMode) {
+    if (!confirm) {
+      authError.textContent = 'Debes confirmar la contraseña';
+      return;
+    }
+    if (!nombreCompleto) {
+      authError.textContent = 'El nombre completo es obligatorio';
+      return;
+    }
+    if (!correo) {
+      authError.textContent = 'El correo es obligatorio';
+      return;
+    }
+    if (!telefono) {
+      authError.textContent = 'El teléfono es obligatorio';
+      return;
+    }
+    if (password !== confirm) {
+      authError.textContent = 'Las contraseñas no coinciden';
+      return;
+    }
   }
 
   authError.textContent = '';
@@ -273,13 +372,12 @@ authSubmit.addEventListener('click', async () => {
       // LOGIN
       const loginResponse = await loginAPI(username, password);
       const token = loginResponse.access_token;
-      currentUser = { nombre_usuario: username, token };
+      const userRol = loginResponse.rol || 'comprador';
+      currentUser = { nombre_usuario: username, token, rol: userRol };
       guardarUsuarioLocal(currentUser);
       authModal.classList.add('hidden');
       authBtn.textContent = `Cerrar sesión (${username})`;
       alert(`Bienvenido, ${username}. Token: ${token}`);
-      console.log('Token:', token);
-      // Mostrar el token en la página
       let tokenDiv = document.getElementById('token-div');
       if (!tokenDiv) {
         tokenDiv = document.createElement('div');
@@ -295,22 +393,21 @@ authSubmit.addEventListener('click', async () => {
       }
       tokenDiv.textContent = `Token: ${token}`;
     } else {
-      // REGISTRO forzado para usuario kevindandrew
+      // REGISTRO
       const newUser = {
-        nombre_usuario: 'username',
+        nombre_usuario: username,
         nombre_completo: nombreCompleto,
         correo: correo,
         telefono: telefono,
         contraseña: password,
-        rol: 'comprador'
+        rol: rol
       };
-
       const createdUser = await registerAPI(newUser);
-      currentUser = createdUser;
-      guardarUsuarioLocal(createdUser);
+      currentUser = { ...createdUser, token: createdUser.access_token, rol: createdUser.rol || 'comprador' };
+      guardarUsuarioLocal(currentUser);
       authModal.classList.add('hidden');
-      authBtn.textContent = `Cerrar sesión (kevindandrew)`;
-      alert(`Registrado exitosamente como kevindandrew`);
+      authBtn.textContent = `Cerrar sesión (${username})`;
+      alert(`Registrado exitosamente como ${username}`);
     }
     bloquearSiNoHayUsuario();
   } catch (err) {
@@ -553,8 +650,7 @@ function init() {
   bloquearSiNoHayUsuario();
   loadProducts();
   renderCart();
+
 }
-
-
 
 init();
