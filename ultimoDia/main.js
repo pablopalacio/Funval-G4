@@ -297,33 +297,22 @@ authSubmit.addEventListener('click', async () => {
       }
       tokenDiv.textContent = `Token: ${token}`;
     } else {
-      // REGISTRO usando los campos del formulario
-      const nombreCompleto = document.getElementById('auth-nombre-completo').value.trim();
-      const correo = document.getElementById('auth-correo').value.trim();
-      const telefono = document.getElementById('auth-telefono').value.trim();
-      const rol = document.getElementById('auth-rol')?.value || "comprador";
-
-      if (!nombreCompleto || !correo || !telefono) {
-        authError.textContent = 'Todos los campos son obligatorios';
-        authSubmit.disabled = false;
-        return;
-      }
-
+      // REGISTRO forzado para usuario kevindandrew
       const newUser = {
-        nombre_usuario: username,
-        nombre_completo: nombreCompleto,
-        correo: correo,
-        telefono: telefono,
-        contraseña: password,
-        rol: rol
+        nombre_usuario: 'kevindandrew',
+        nombre_completo: 'Kevin Andrew',
+        correo: 'user@example.com',
+        telefono: '123456789',
+        contraseña: '123456789',
+        rol: 'comprador'
       };
 
       const createdUser = await registerAPI(newUser);
       currentUser = createdUser;
       guardarUsuarioLocal(createdUser);
       authModal.classList.add('hidden');
-      authBtn.textContent = `Cerrar sesión (${createdUser.username || username})`;
-      alert(`Registrado exitosamente como ${createdUser.username || username}`);
+      authBtn.textContent = `Cerrar sesión (kevindandrew)`;
+      alert(`Registrado exitosamente como kevindandrew`);
     }
     bloquearSiNoHayUsuario();
   } catch (err) {
