@@ -143,11 +143,20 @@ function cargarPanelAdmin() {
     <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow mb-8">
       <h3 class="text-lg font-medium text-gray-800 dark:text-white mb-2">Bienvenido, kevindandrew (ADMIN)</h3>
       <p class="text-gray-600 dark:text-gray-300">Aquí puedes gestionar el sistema.</p>
+      <div id="admin-metrics" class="mt-6 space-y-4">
+        <div><strong>Total de cuentas creadas:</strong> <span id="total-cuentas">...</span></div>
+        <div><strong>Productos vendidos:</strong> <span id="total-vendidos">...</span></div>
+        <div><strong>Día con más ingresos:</strong> <span id="dia-mas-ingresos">...</span></div>
+        <div><strong>Productos sin stock:</strong> <span id="productos-sin-stock">...</span></div>
+      </div>
     </div>
     <div class="text-center">
       <button id="volver-btn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">Volver a la tienda</button>
     </div>
   `;
+
+  // Consultar métricas al cargar el panel
+  cargarMetricasAdmin();
   document.body.appendChild(adminPanel);
   document.getElementById('logout-admin-btn').onclick = () => { logout(); location.reload(); };
   document.getElementById('volver-btn').onclick = () => {
@@ -155,6 +164,48 @@ function cargarPanelAdmin() {
     if (main) main.classList.remove('hidden');
     if (footer) footer.classList.remove('hidden');
   };
+}
+
+// Función para consultar métricas admin
+async function cargarMetricasAdmin() {
+  // Total de cuentas creadas
+  try {
+    const resUsuarios = await fetch(`${API_BASE}/usuarios?skip=0&limit=1000`, {
+      headers: { Authorization: `Bearer ${currentUser.token}` },
+    });
+    const dataUsuarios = await resUsuarios.json();
+    document.getElementById('total-cuentas').textContent = Array.isArray(dataUsuarios) ? dataUsuarios.length : (dataUsuarios.usuarios?.length || '0');
+  } catch {
+    document.getElementById('total-cuentas').textContent = 'Error';
+  }
+
+  // Productos vendidos y día con más ingresos (requiere endpoint de ventas)
+  try {
+    const resVentas = await fetch(`${API_BASE}/ventas/estadisticas`, {
+      headers: { Authorization: `Bearer ${currentUser.token}` },
+    });
+    const dataVentas = await resVentas.json();
+    document.getElementById('total-vendidos').textContent = dataVentas.total_productos_vendidos || '0';
+    document.getElementById('dia-mas-ingresos').textContent = dataVentas.dia_mas_ingresos || 'No disponible';
+  } catch {
+    document.getElementById('total-vendidos').textContent = 'Error';
+    document.getElementById('dia-mas-ingresos').textContent = 'Error';
+  }
+
+  // Productos sin stock
+  try {
+    const resStock = await fetch(`${API_BASE}/productos/sin-stock`, {
+      headers: { Authorization: `Bearer ${currentUser.token}` },
+    });
+    const dataStock = await resStock.json();
+    if (Array.isArray(dataStock) && dataStock.length > 0) {
+      document.getElementById('productos-sin-stock').textContent = dataStock.map(p => p.nombre).join(', ');
+    } else {
+      document.getElementById('productos-sin-stock').textContent = 'Ninguno';
+    }
+  } catch {
+    document.getElementById('productos-sin-stock').textContent = 'Error';
+  }
 }
 
 async function cargarPerfil() {
@@ -306,7 +357,11 @@ async function registerAPI(newUser) {
     let errorMsg = 'Error al registrar usuario';
     try {
       const errorData = await res.json();
-      if (errorData && errorData.message) errorMsg = errorData.message;
+      if (errorData && errorData.detail) {
+        errorMsg = JSON.stringify(errorData.detail);
+      } else if (errorData && errorData.message) {
+        errorMsg = errorData.message;
+      }
     } catch {}
     throw new Error(errorMsg);
   }
@@ -367,9 +422,10 @@ authSubmit.addEventListener('click', async () => {
   authError.textContent = '';
   authSubmit.disabled = true;
 
+
   try {
     if (isLoginMode) {
-      // LOGIN
+      // LOGIN: solo nombre_usuario y contraseña
       const loginResponse = await loginAPI(username, password);
       const token = loginResponse.access_token;
       const userRol = loginResponse.rol || 'comprador';
@@ -393,7 +449,7 @@ authSubmit.addEventListener('click', async () => {
       }
       tokenDiv.textContent = `Token: ${token}`;
     } else {
-      // REGISTRO
+      // REGISTRO: crea usuario, luego pide que inicie sesión
       const newUser = {
         nombre_usuario: username,
         nombre_completo: nombreCompleto,
@@ -403,11 +459,9 @@ authSubmit.addEventListener('click', async () => {
         rol: rol
       };
       const createdUser = await registerAPI(newUser);
-      currentUser = { ...createdUser, token: createdUser.access_token, rol: createdUser.rol || 'comprador' };
-      guardarUsuarioLocal(currentUser);
-      authModal.classList.add('hidden');
-      authBtn.textContent = `Cerrar sesión (${username})`;
-      alert(`Registrado exitosamente como ${username}`);
+      // No loguear automáticamente, mostrar mensaje y cambiar a modo login
+      alert(`Registrado exitosamente como ${username}. Ahora puedes iniciar sesión.`);
+      showAuthModal(true); // Cambia a modo login
     }
     bloquearSiNoHayUsuario();
   } catch (err) {
